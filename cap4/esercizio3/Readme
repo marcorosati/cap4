@@ -1,0 +1,11 @@
+
+SETUP
+docker pull registry.redhat.io/redhat-openjdk-18/openjdk18-openshift
+oc import-image openjdk18-openshift --confirm --insecure --from=localhost:5000/openjdk18-openshift
+oc new-app openjdk18-openshift~https://github.com/marcorosati/builds-for-manager.git --name builds-for-managers
+oc expose svc/builds-for-managers
+
+curl http://builds-for-managers-myproject.127.0.0.1.nip.io/HelloWorldExample/hello/1 per 200 per 400 togliere 1 (non funziona all'interno del pod di build,connessione rifiutata)
+										
+
+
